@@ -1,0 +1,858 @@
+// Base container styles
+.container {
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 0.25rem;
+  transition: all 0.3s ease;
+  max-width: 100%;
+  margin: 0 auto;
+  font-size: 13px;
+  
+  @media (min-width: 375px) {
+    padding: 0.5rem;
+    font-size: 14px;
+  }
+  
+  @media (min-width: 640px) {
+    padding: 0.75rem;
+    font-size: 15px;
+  }
+  
+  @media (min-width: 1024px) {
+    padding: 1rem 1.5rem;
+    max-width: 1400px;
+    font-size: 16px;
+  }
+}
+
+.dark {
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: #f8fafc;
+}
+
+.light {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  color: #1e293b;
+}
+
+.topBar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  
+  @media (min-width: 640px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+    
+    @media (min-width: 640px) {
+      font-size: 1.5rem;
+    }
+    
+    @media (min-width: 1024px) {
+      font-size: 1.75rem;
+    }
+  }
+}
+
+.themeToggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-1px);
+  }
+
+  .light & {
+    background: white;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  
+  @media (min-width: 640px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  
+  @media (min-width: 640px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .dropdown {
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: inherit;
+    font-size: 0.9rem;
+
+    .light & {
+      background: white;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .overDigitSelector {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.8rem 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 0.9rem;
+    
+    @media (min-width: 640px) {
+      flex-direction: row;
+      align-items: center;
+      padding: 0.6rem 1rem;
+    }
+
+    .light & {
+      background: white;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .digitInput {
+      width: 50px;
+      padding: 0.3rem 0.5rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: inherit;
+      text-align: center;
+
+      .light & {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+      }
+    }
+  }
+}
+
+.live {
+  text-align: center;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  .light & {
+    background: white;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    .recharts-wrapper {
+      width: 100% !important;
+      height: 160px !important;
+      
+      @media (min-width: 375px) {
+        height: 180px !important;
+      }
+      
+      @media (min-width: 640px) {
+        height: 220px !important;
+      }
+      
+      @media (min-width: 768px) {
+        height: 250px !important;
+      }
+      
+      .recharts-cartesian-axis-tick {
+        font-size: 0.7rem;
+        
+        @media (min-width: 640px) {
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    font-size: 1rem;
+    margin: 0 0 0.25rem 0;
+    
+    @media (min-width: 640px) {
+      font-size: 1.1rem;
+    }
+  }
+
+  p {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #06b6d4;
+    margin: 0;
+    
+    @media (min-width: 640px) {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.charts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  @media (min-width: 1024px) {
+    gap: 2rem;
+  }
+
+  .chartContainer {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    
+    @media (min-width: 640px) {
+      padding: 1rem;
+    }
+    
+    @media (min-width: 1024px) {
+      padding: 1.2rem;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .light & {
+      background: white;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      color: #64748b;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+  }
+}
+
+/* Analysis Section */
+.analysisSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Digit Analysis */
+.digitAnalysis {
+  h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 0.75rem 0;
+    color: #64748b;
+    font-size: 0.9rem;
+    font-weight: 600;
+    
+    @media (min-width: 640px) {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    svg {
+      width: 16px;
+      height: 16px;
+      
+      @media (min-width: 640px) {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+}
+
+.digitCircles {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.15rem;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0.15rem;
+  perspective: 1000px;
+  
+  @media (min-width: 375px) {
+    gap: 0.35rem;
+    padding: 0.5rem;
+  }
+  
+  @media (min-width: 640px) {
+    gap: 0.5rem;
+    padding: 0.75rem;
+    max-width: 400px;
+  }
+  
+  @media (min-width: 768px) {
+    gap: 0.75rem;
+    padding: 1rem;
+    max-width: 500px;
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.6rem;
+    padding: 0.5rem;
+  }
+}
+
+.digitCircle {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 2px solid transparent;
+  width: 100%;
+  max-width: 70px;
+  height: auto;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.4));
+    border-radius: 50%;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    
+    &::before {
+      opacity: 1;
+    }
+    
+    .digitNumber {
+      transform: scale(1.1);
+    }
+  }
+
+  .dark & {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    
+    &::before {
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.1));
+    }
+  }
+
+  &.overDigit {
+    background: linear-gradient(145deg, #10b981, #0d9c6e);
+    border-color: rgba(16, 185, 129, 0.3);
+    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.2);
+    color: white;
+    
+    .digitNumber {
+      color: white;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    
+    .digitPercentage, .digitCount {
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    &:hover {
+      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.3);
+    }
+  }
+
+  &.underDigit {
+    background: linear-gradient(145deg, #ef4444, #dc2626);
+    border-color: rgba(239, 68, 68, 0.3);
+    box-shadow: 0 4px 20px rgba(239, 68, 68, 0.2);
+    color: white;
+    
+    .digitNumber {
+      color: white;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    
+    .digitPercentage, .digitCount {
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    &:hover {
+      box-shadow: 0 8px 30px rgba(239, 68, 68, 0.3);
+    }
+  }
+
+  &.thresholdDigit {
+    background: linear-gradient(145deg, #f59e0b, #d97706);
+    border-color: rgba(245, 158, 11, 0.3);
+    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.2);
+    color: white;
+    
+    .digitNumber {
+      color: white;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    
+    .digitPercentage, .digitCount {
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    &:hover {
+      box-shadow: 0 8px 30px rgba(245, 158, 11, 0.3);
+    }
+  }
+
+  &.activeDigit {
+    animation: pulseGlow 2s infinite alternate, float 3s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #ef4444, #f97316, #eab308, #84cc16, #10b981, #3b82f6, #8b5cf6, #ec4899, #ef4444);
+      background-size: 400% 400%;
+      z-index: -1;
+      animation: borderGradient 4s ease infinite, pulse 4s infinite;
+      filter: blur(2px);
+      opacity: 0.8;
+    }
+    
+    .digitNumber {
+      animation: bounce 0.5s ease infinite alternate;
+    }
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.digitInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.digitNumber {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #3b82f6;
+  transition: all 0.2s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  
+  @media (min-width: 375px) {
+    font-size: 0.8rem;
+  }
+  
+  @media (min-width: 640px) {
+    font-size: 0.9rem;
+  }
+  
+  @media (min-width: 768px) {
+    font-size: 1rem;
+  }
+  
+  .dark & {
+    color: #60a5fa;
+  }
+}
+
+.digitPercentage {
+  font-size: 0.5rem;
+  font-weight: 600;
+  color: #64748b;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  opacity: 0.9;
+  
+  .dark & {
+    color: #cbd5e1;
+  }
+}
+
+.digitCount {
+  font-size: 0.45rem;
+  color: #94a3b8;
+  white-space: nowrap;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  opacity: 0.8;
+  
+  .dark & {
+    color: #a1a1aa;
+  }
+}
+
+/* Over/Under Analysis */
+.overUnderAnalysis {
+  h3 {
+    margin-bottom: 1rem;
+    color: #64748b;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+}
+
+.numberSelector {
+  margin-bottom: 1.5rem;
+
+  .selectorLabel {
+    display: block;
+    margin-bottom: 0.75rem;
+    color: #64748b;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+}
+
+.numberGrid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 0.4rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.numBtn {
+  padding: 0.6rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 6px;
+  background: white;
+  color: #64748b;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  .dark & {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #cbd5e1;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: #3b82f6;
+  }
+
+  &.selected {
+    background: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
+    transform: scale(1.05);
+  }
+
+  &.overDigit {
+    border-color: #10b981;
+    color: #10b981;
+  }
+
+  &.underDigit {
+    border-color: #ef4444;
+    color: #ef4444;
+  }
+}
+
+.progressAnalysis {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  
+  @media (min-width: 640px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+.progressCard {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .light & {
+    background: white;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.progressHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+
+  .percentageValue {
+    margin-left: auto;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+}
+
+.progressBar {
+  width: 100%;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+
+  .light & {
+    background: #f1f5f9;
+  }
+}
+
+.progressFillOver {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981, #34d399);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.5s ease;
+  position: relative;
+}
+
+.progressFillUnder {
+  height: 100%;
+  background: linear-gradient(90deg, #ef4444, #f87171);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.5s ease;
+  position: relative;
+}
+
+.progressText {
+  color: white;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.countInfo {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  text-align: center;
+}
+
+.summaryStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  padding: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.8em;
+  
+  @media (min-width: 375px) {
+    font-size: 0.85em;
+    padding: 0.75rem;
+  }
+  
+  @media (min-width: 640px) {
+    font-size: 0.9em;
+  }
+  
+  @media (min-width: 480px) {
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  .light & {
+    background: white;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+
+  .light & {
+    background: #f8fafc;
+  }
+}
+
+.statLabel {
+  font-size: 0.7rem;
+  color: #64748b;
+  font-weight: 500;
+  
+  @media (min-width: 375px) {
+    font-size: 0.75rem;
+  }
+  
+  @media (min-width: 640px) {
+    font-size: 0.8rem;
+  }
+}
+
+.statValue {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #3b82f6;
+  
+  @media (min-width: 375px) {
+    font-size: 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    font-size: 1.1rem;
+  }
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 5px 0 rgba(239, 68, 68, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 20px 5px rgba(239, 68, 68, 0.6);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes borderGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1.1);
+    border-width: 4px;
+  }
+  25% {
+    transform: scale(1.15);
+    border-width: 5px;
+  }
+  50% {
+    transform: scale(1.1);
+    border-width: 4px;
+  }
+  75% {
+    transform: scale(1.15);
+    border-width: 5px;
+  }
+}
