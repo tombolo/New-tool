@@ -225,13 +225,27 @@ export default function Home() {
               const isOver = i > overDigit;
               const isUnder = i < overDigit;
 
+              const percentageValue = parseFloat(percentage);
+              const isEven = i % 2 === 0;
+              
               return (
                 <div 
                   key={i} 
                   className={`${styles.digitCircle} ${isActive ? styles.activeDigit : ''} ${
                     isOver ? styles.overDigit : isUnder ? styles.underDigit : styles.thresholdDigit
                   }`}
+                  data-percentage={percentageValue}
                 >
+                  <div className={styles.liquidFill} style={{
+                    '--fill-percentage': `${percentageValue}%`,
+                    '--liquid-color': isOver 
+                      ? 'rgba(16, 185, 129, 0.7)' 
+                      : isUnder 
+                        ? 'rgba(239, 68, 68, 0.7)' 
+                        : 'rgba(245, 158, 11, 0.7)'
+                  } as React.CSSProperties}>
+                    <div className={styles.liquidWave}></div>
+                  </div>
                   <div className={styles.digitInner}>
                     <span className={styles.digitNumber}>{i}</span>
                     <span className={styles.digitPercentage}>{percentage}%</span>
@@ -321,6 +335,61 @@ export default function Home() {
             <div className={styles.statItem}>
               <span className={styles.statLabel}>Threshold</span>
               <span className={styles.statValue}>{overDigit}</span>
+            </div>
+          </div>
+          
+          {/* Even/Odd Analysis */}
+          <div className={styles.evenOddAnalysis}>
+            <h3>Even/Odd Analysis (Last 1000 Ticks)</h3>
+            <div className={styles.evenOddContainer}>
+              {[0, 1].map(type => {
+                const isEven = type === 0;
+                const count = digitCounts.filter((_, i) => (i % 2 === 0) === isEven).reduce((a, b) => a + b, 0);
+                const percentage = ((count / totalTicks) * 100).toFixed(1);
+                const isCurrentEven = tick ? Math.floor((tick * 10) % 10) % 2 === 0 : null;
+                
+                return (
+                  <div 
+                    key={type}
+                    className={`${styles.evenOddCard} ${isEven ? styles.even : styles.odd} ${
+                      isCurrentEven === isEven ? styles.current : ''
+                    }`}
+                  >
+                    <div className={styles.evenOddHeader}>
+                      <h4>{isEven ? 'Even' : 'Odd'} Numbers</h4>
+                      <div className={styles.evenOddPercentage}>
+                        {percentage}% <span>({count})</span>
+                      </div>
+                    </div>
+                    <div className={styles.evenOddBar}>
+                      <div 
+                        className={`${styles.evenOddFill} ${
+                          isEven ? styles.evenFill : styles.oddFill
+                        }`}
+                        style={{ width: `${percentage}%` }}
+                      ></div>
+                    </div>
+                    <div className={styles.evenOddDigits}>
+                      {digitCounts
+                        .filter((_, i) => (i % 2 === 0) === isEven)
+                        .map((_, idx) => {
+                          const digit = isEven ? idx * 2 : idx * 2 + 1;
+                          if (digit > 9) return null;
+                          return (
+                            <span 
+                              key={digit}
+                              className={`${styles.evenOddDigit} ${
+                                tick && Math.floor((tick * 10) % 10) === digit ? styles.activeDigit : ''
+                              }`}
+                            >
+                              {digit}
+                            </span>
+                          );
+                        })}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
